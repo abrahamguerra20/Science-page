@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,14 +11,14 @@
 
     <style>
         /* =================================
-           ESTILOS CSS (DISEÑO DE LA PÁGINA)
+           CSS STYLES (PAGE DESIGN)
            ================================= */
         
         :root {
-            --color-primario: #4e54c8; /* Un morado/azul vibrante */
+            --color-primario: #4e54c8; /* A vibrant purple/blue */
             --color-secundario: #8f94fb;
-            --color-fondo: #121212; /* Fondo oscuro */
-            --color-superficie: #1e1e1e; /* Color para las "tarjetas" */
+            --color-fondo: #121212; /* Dark background */
+            --color-superficie: #1e1e1e; /* Color for "cards" */
             --color-texto: #e0e0e0;
             --color-texto-secundario: #a0a0a0;
             --sombra: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -64,7 +64,7 @@
             margin-bottom: 3rem;
         }
 
-        /* --- Header y Navegación --- */
+        /* --- Header & Navigation --- */
         .main-header {
             position: fixed;
             top: 0;
@@ -99,14 +99,14 @@
             color: var(--color-secundario);
         }
 
-        /* --- Sección Hero (Principal) --- */
+        /* --- Hero Section --- */
         #hero {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 3rem;
             min-height: 100vh;
-            padding-top: 80px; /* Espacio para el header fijo */
+            padding-top: 80px; /* Space for fixed header */
         }
 
         .hero-text {
@@ -140,7 +140,7 @@
             box-shadow: var(--sombra);
         }
 
-        /* --- Tarjetas para Proyectos y Publicaciones --- */
+        /* --- Cards for Projects & Publications --- */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -154,11 +154,17 @@
             box-shadow: var(--sombra);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-content {
+            flex-grow: 1;
         }
 
         .card h3 {
@@ -177,12 +183,14 @@
             color: var(--color-primario);
             text-decoration: none;
             font-weight: 600;
+            margin-top: 1rem;
+            display: inline-block;
         }
         .card a:hover {
             text-decoration: underline;
         }
         
-        /* --- Sección de Habilidades --- */
+        /* --- Skills Section --- */
         .skills-container {
             display: flex;
             flex-wrap: wrap;
@@ -203,7 +211,7 @@
             color: white;
         }
 
-        /* --- Sección de Contacto y Footer --- */
+        /* --- Contact Section & Footer --- */
         .contact-links {
             text-align: center;
             margin-top: 2rem;
@@ -228,7 +236,7 @@
             color: var(--color-texto-secundario);
         }
         
-        /* --- Diseño Responsivo para Celulares --- */
+        /* --- Responsive Design for Mobile --- */
         @media (max-width: 900px) {
             #hero {
                 flex-direction: column-reverse;
@@ -262,11 +270,11 @@
     <header class="main-header">
         <a href="#" class="logo">AG</a>
         <nav class="main-nav">
-            <a href="#about">Sobre mí</a>
-            <a href="#projects">Proyectos</a>
-            <a href="#publications">Publicaciones</a>
-            <a href="#skills">Habilidades</a>
-            <a href="#contact">Contacto</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#publications">Publications</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
@@ -274,108 +282,141 @@
         <section id="hero" class="container">
             <div class="hero-text">
                 <h1>Abraham D. Guerra Ospino</h1>
-                <p class="subtitle">Microbiólogo | Investigador en Genética y Biotecnología</p>
-                <p>Apasionado por descifrar el lenguaje de los microorganismos y su impacto en nuestro mundo. Cada día es una oportunidad para explorar, innovar y contribuir a la ciencia.</p>
+                <p class="subtitle">Microbiologist | Researcher in Genetics & Biotechnology</p>
+                <p>My research focuses on Microbiomes, Pangenomics, and Metagenomics, with an emphasis on Comparative Genomics, Extremophiles, Archaea, and Plant-Associated Microbiomes.</p>
             </div>
             <div class="hero-image">
-                <img src="profile.jpg" alt="Foto de Abraham Guerra Ospino">
+                <img src="profile.jpg" alt="Photo of Abraham Guerra Ospino">
             </div>
         </section>
 
         <section id="about" class="container">
             <div class="section-header">
-                <h2>Sobre Mí</h2>
+                <h2>About Me</h2>
             </div>
             <p style="text-align: center; max-width: 800px; margin: 0 auto;">
-                ¡Hola! Soy Abraham, un microbiólogo y investigador con sólida formación en microbiología ambiental, ecología microbiana y genética. Actualmente, como becario CAPES, curso una maestría en Genética y Mejoramiento de Plantas en la UNESP y colaboro con el Centro de Investigación en Biodiversidad y Cambio Climático (CBioClima). Mi carrera se ha centrado en la bioprospección de comunidades microbianas para la sostenibilidad, aplicando técnicas de genómica, bioinformática y biología molecular para desarrollar soluciones innovadoras en biorremediación y ciclado de nutrientes. Soy una persona organizada, detallista y altamente motivada para contribuir a la investigación interdisciplinaria.
+                I am a Microbiologist with a Bachelor's degree from Universidad Simón Bolívar. Currently, I am a CAPES scholarship holder pursuing a Master’s degree in Plant Genetics and Breeding at São Paulo State University (UNESP). I am also an active researcher at CBioClima - Center for Research in Biodiversity and Climate Change. My work integrates genomics, bioinformatics, and molecular biology to explore microbial communities, with the goal of developing innovative and sustainable biotechnological solutions.
             </p>
         </section>
 
         <section id="projects" class="container">
             <div class="section-header">
-                <h2>Proyectos Destacados</h2>
+                <h2>Featured Projects</h2>
             </div>
             <div class="grid">
                 <div class="card">
-                    <h3>Pangenoma de 'Candidatus Liberibacter asiaticus' (CLas)</h3>
-                    <p>Desentrañando la diversidad genómica de la bacteria que causa el Huanglongbing (HLB) o "enverdecimiento de los cítricos", la enfermedad más devastadora del sector. Este proyecto busca identificar factores de virulencia y guiar el desarrollo de nuevas estrategias de control.</p>
+                    <div class="card-content">
+                        <h3>Pangenome of 'Candidatus Liberibacter asiaticus' (CLas)</h3>
+                        <p>Unraveling the genomic diversity of the bacterium causing citrus greening (HLB). This project aims to identify virulence factors and guide the development of new control strategies.</p>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3>Reclasificación de Methanobrevibacter smithii</h3>
-                    <p>Utilizando genómica comparativa para revelar que este arqueano, común en la microbiota humana, en realidad comprende dos especies distintas, desafiando la clasificación tradicional y abriendo nuevas preguntas sobre su rol en la salud.</p>
+                    <div class="card-content">
+                        <h3>Rethinking Methanobrevibacter smithii</h3>
+                        <p>Using comparative genomics to reveal that this human-associated archaeon comprises two distinct species, challenging traditional classification and opening new questions about its role in health.</p>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3>Potencial Probiótico de Lactiplantibacillus plantarum HCA1</h3>
-                    <p>Caracterización genómica de una cepa bacteriana aislada de estiércol de cerdo, identificando genes que le confieren un alto potencial probiótico y antimicrobiano, posicionándola como candidata para aplicaciones en salud y conservación de alimentos.</p>
+                    <div class="card-content">
+                        <h3>Probiotic Potential of Lactiplantibacillus plantarum HCA1</h3>
+                        <p>Genomic characterization of a bacterial strain with high probiotic and antimicrobial potential, positioning it as a promising candidate for health and food preservation applications.</p>
+                    </div>
                 </div>
                  <div class="card">
-                    <h3>Genética de Plantas Carnívoras Acuáticas</h3>
-                    <p>Estudio genómico de las especies *Utricularia foliosa* y *U. gibba* en Colombia y Brasil para entender su diversidad, evolución y estado de conservación, revelando patrones de flujo genético a larga distancia, posiblemente mediados por aves.</p>
+                    <div class="card-content">
+                        <h3>Genetics of Aquatic Carnivorous Plants</h3>
+                        <p>A genomic study of *Utricularia* species in Colombia and Brazil to understand their diversity and evolution, revealing long-distance gene flow patterns, possibly mediated by birds.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Usiacurí Mineral Water Wells</h3>
+                        <p>Assessed the environmental potential and health risks of mineral water wells by investigating their microbiological and chemical composition to identify potential contaminants.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Microbial Diversity in a Mexican Cloud Forest</h3>
+                        <p>Characterized the bacterial and fungal diversity in an undisturbed montane cloud forest in Oaxaca, Mexico, revealing a high prevalence of key functional species like phosphate solubilizers.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Propagation of Ornamental Plants</h3>
+                        <p>Focused on optimizing growth and reproduction methods for ornamental plants and succulents, exploring techniques like cuttings, grafting, and seed propagation to improve yield and quality.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="publications" class="container">
             <div class="section-header">
-                <h2>Publicaciones Clave</h2>
+                <h2>Key Publications</h2>
             </div>
             <div class="grid">
                  <div class="card">
-                    <h4>Aquifers and Groundwater: Challenges in Water Resource Management in Colombia</h4>
-                    <p class="publication-meta">Water, 2024</p>
-                    <p>Una revisión sobre la importancia y los desafíos en la gestión de acuíferos en países en desarrollo como Colombia.</p>
-                    <a href="https://doi.org/10.3390/w16050685" target="_blank">Leer más <i class="fas fa-external-link-alt"></i></a>
+                    <div class="card-content">
+                        <h4>Aquifers and Groundwater: Challenges in Water Resource Management in Colombia</h4>
+                        <p class="publication-meta">Water, 2024</p>
+                        <p>A review on the importance and challenges of aquifer management in developing countries like Colombia.</p>
+                    </div>
+                    <a href="https://doi.org/10.3390/w16050685" target="_blank">Read More <i class="fas fa-external-link-alt"></i></a>
                 </div>
                 <div class="card">
-                    <h4>Human associated Archaea: a neglected microbiome worth investigating</h4>
-                    <p class="publication-meta">World Journal of Microbiology and Biotechnology, 2024</p>
-                    <p>Este trabajo destaca la importancia del arqueoma humano, un área poco estudiada, y su potencial rol en la salud.</p>
-                    <a href="https://doi.org/10.1007/s11274-023-03842-7" target="_blank">Leer más <i class="fas fa-external-link-alt"></i></a>
+                    <div class="card-content">
+                        <h4>Human associated Archaea: a neglected microbiome worth investigating</h4>
+                        <p class="publication-meta">World Journal of Microbiology and Biotechnology, 2024</p>
+                        <p>This work highlights the importance of the human archaeome, an understudied field, and its potential role in health.</p>
+                    </div>
+                    <a href="https://doi.org/10.1007/s11274-023-03842-7" target="_blank">Read More <i class="fas fa-external-link-alt"></i></a>
                 </div>
                 <div class="card">
-                    <h4>Soil culturable microbial diversity in an undisturbed montane cloud forest of Oaxaca, Mexico</h4>
-                    <p class="publication-meta">Revista Mexicana de Biodiversidad, 2023</p>
-                    <p>Evaluación de la diversidad microbiana en un bosque mesófilo, revelando una alta prevalencia de especies funcionales.</p>
-                    <a href="https://doi.org/10.22201/ib.20078706e.2023.94.4980" target="_blank">Leer más <i class="fas fa-external-link-alt"></i></a>
+                    <div class="card-content">
+                        <h4>Soil culturable microbial diversity in an undisturbed montane cloud forest of Oaxaca, Mexico</h4>
+                        <p class="publication-meta">Revista Mexicana de Biodiversidad, 2023</p>
+                        <p>Evaluation of microbial diversity in a montane cloud forest, revealing a high prevalence of functional species.</p>
+                    </div>
+                    <a href="https://doi.org/10.22201/ib.20078706e.2023.94.4980" target="_blank">Read More <i class="fas fa-external-link-alt"></i></a>
                 </div>
             </div>
         </section>
 
         <section id="skills" class="container">
             <div class="section-header">
-                <h2>Habilidades Técnicas</h2>
+                <h2>Technical Skills</h2>
             </div>
             <div class="skills-container">
-                <span class="skill-tag">Genómica</span>
-                <span class="skill-tag">Metagenómica</span>
-                <span class="skill-tag">Bioinformática</span>
+                <span class="skill-tag">Genomics</span>
+                <span class="skill-tag">Metagenomics</span>
+                <span class="skill-tag">Bioinformatics</span>
                 <span class="skill-tag">Python</span>
                 <span class="skill-tag">R</span>
                 <span class="skill-tag">Linux</span>
-                <span class="skill-tag">PCR y Secuenciación</span>
+                <span class="skill-tag">PCR & Sequencing</span>
                 <span class="skill-tag">Anvi'o & Prokka</span>
-                <span class="skill-tag">Cultivo Microbiano</span>
-                <span class="skill-tag">Bioprospección</span>
-                <span class="skill-tag">Filogenética</span>
-                <span class="skill-tag">Pangenómica</span>
+                <span class="skill-tag">Microbial Culture</span>
+                <span class="skill-tag">Bioprospecting</span>
+                <span class="skill-tag">Phylogenetics</span>
+                <span class="skill-tag">Pangenomics</span>
             </div>
         </section>
         
         <section id="contact" class="container">
              <div class="section-header">
-                <h2>Contacto</h2>
+                <h2>Contact</h2>
             </div>
             <div class="contact-links">
-                <a href="mailto:adgobioinformatic@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="mailto:adgobioinformatic@gmail.com" aria-label="Personal Email"><i class="fas fa-envelope"></i></a>
+                <a href="mailto:abraham.guerra@unesp.br" aria-label="Academic Email"><i class="fas fa-university"></i></a>
                 <a href="https://github.com/abrahamguerra20" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://www.researchgate.net/profile/Abraham-Guerra-3" target="_blank" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
-                </div>
+            </div>
         </section>
 
     </main>
 
     <footer>
-        <p>&copy; 2025 Abraham David Guerra Ospino. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Abraham David Guerra Ospino. All rights reserved.</p>
     </footer>
 
 </body>
