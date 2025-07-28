@@ -15,10 +15,10 @@
            ================================= */
         
         :root {
-            --color-primario: #4e54c8; /* A vibrant purple/blue */
+            --color-primario: #4e54c8;
             --color-secundario: #8f94fb;
-            --color-fondo: #121212; /* Dark background */
-            --color-superficie: #1e1e1e; /* Color for "cards" */
+            --color-fondo: #121212;
+            --color-superficie: #1e1e1e;
             --color-texto: #e0e0e0;
             --color-texto-secundario: #a0a0a0;
             --sombra: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -106,44 +106,19 @@
             justify-content: center;
             gap: 3rem;
             min-height: 100vh;
-            padding-top: 80px; /* Space for fixed header */
+            padding-top: 80px;
         }
 
-        .hero-text {
-            max-width: 600px;
-        }
+        .hero-text { max-width: 600px; }
+        .hero-text h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 1rem; }
+        .hero-text .subtitle { font-size: 1.5rem; color: var(--color-secundario); margin-bottom: 1.5rem; font-weight: 400; }
+        .hero-text p { font-size: 1.1rem; color: var(--color-texto-secundario); }
+        .hero-image img { width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 5px solid var(--color-primario); box-shadow: var(--sombra); }
 
-        .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        
-        .hero-text .subtitle {
-            font-size: 1.5rem;
-            color: var(--color-secundario);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            color: var(--color-texto-secundario);
-        }
-
-        .hero-image img {
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid var(--color-primario);
-            box-shadow: var(--sombra);
-        }
-
-        /* --- Cards for Projects & Publications --- */
+        /* --- Cards --- */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 1.5rem;
         }
 
@@ -158,108 +133,58 @@
             flex-direction: column;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        .card:hover { transform: translateY(-10px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); }
+        .card-content { flex-grow: 1; font-size: 0.95rem; color: var(--color-texto-secundario); }
+        .card h3 { color: var(--color-secundario); margin-bottom: 0.75rem; font-size: 1.25rem;}
+        .card a { color: var(--color-primario); text-decoration: none; font-weight: 600; margin-top: 1rem; display: inline-block; }
+        .card a:hover { text-decoration: underline; }
+
+        /* --- Project Image Placeholders --- */
+        .project-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+        }
+        .project-images img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+            background-color: var(--color-fondo);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .card-content {
-            flex-grow: 1;
-        }
-
-        .card h3 {
-            color: var(--color-secundario);
-            margin-bottom: 0.5rem;
-        }
-
-        .publication-meta {
+        /* --- Status Tag for In-Progress Projects --- */
+        .status-tag {
             font-style: italic;
+            color: var(--color-secundario);
             font-size: 0.9rem;
-            color: var(--color-texto-secundario);
-            margin-bottom: 1rem;
-        }
-        
-        .card a {
-            color: var(--color-primario);
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
-            display: inline-block;
-        }
-        .card a:hover {
-            text-decoration: underline;
+            margin-top: 0.5rem;
         }
         
         /* --- Skills Section --- */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
+        .skills-container { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+        .skill-tag { background-color: var(--color-superficie); padding: 0.5rem 1rem; border-radius: 20px; font-weight: 400; border: 1px solid var(--color-primario); transition: background-color 0.3s; }
+        .skill-tag:hover{ background-color: var(--color-primario); color: white; }
 
-        .skill-tag {
-            background-color: var(--color-superficie);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 400;
-            border: 1px solid var(--color-primario);
-            transition: background-color 0.3s;
-        }
-        .skill-tag:hover{
-            background-color: var(--color-primario);
-            color: white;
-        }
-
-        /* --- Contact Section & Footer --- */
-        .contact-links {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .contact-links a {
-            color: var(--color-texto-secundario);
-            font-size: 2.5rem;
-            margin: 0 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .contact-links a:hover {
-            color: var(--color-secundario);
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--color-texto-secundario);
-        }
+        /* --- Contact & Footer --- */
+        .contact-links { text-align: center; margin-top: 2rem; }
+        .contact-links a { color: var(--color-texto-secundario); font-size: 2.5rem; margin: 0 1rem; transition: color 0.3s ease; }
+        .contact-links a:hover { color: var(--color-secundario); }
+        footer { text-align: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid rgba(255, 255, 255, 0.1); color: var(--color-texto-secundario); }
         
-        /* --- Responsive Design for Mobile --- */
+        /* --- Responsive Design --- */
         @media (max-width: 900px) {
-            #hero {
-                flex-direction: column-reverse;
-                text-align: center;
-                padding-top: 120px;
-            }
-            .hero-text h1 {
-                font-size: 2.8rem;
-            }
-            .hero-image img {
-                width: 250px;
-                height: 250px;
-            }
+            #hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .hero-image img { width: 250px; height: 250px; }
         }
-        
         @media (max-width: 600px) {
-            .main-header{
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            .main-nav a {
-                margin: 0 0.5rem;
-            }
+            .main-header{ flex-direction: column; gap: 0.5rem; }
+            .main-nav a { margin: 0 0.5rem; }
             h2 { font-size: 2rem; }
         }
 
@@ -272,7 +197,7 @@
         <nav class="main-nav">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
-            <a href="#publications">Publications</a>
+            <a href="#reviews">Reviews</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -281,8 +206,8 @@
     <main>
         <section id="hero" class="container">
             <div class="hero-text">
-                <h1>Abraham David Guerra Ospino</h1>
-                <p class="subtitle">Microbiologist | Bioinformatician | Researcher in Genetics & Biotechnology</p>
+                <h1>Abraham D. Guerra Ospino</h1>
+                <p class="subtitle">Microbiologist | Researcher in Genetics & Biotechnology</p>
                 <p>My research focuses on Microbiomes, Pangenomics, and Metagenomics, with an emphasis on Comparative Genomics, Extremophiles, Archaea, and Plant-Associated Microbiomes.</p>
             </div>
             <div class="hero-image">
@@ -301,83 +226,144 @@
 
         <section id="projects" class="container">
             <div class="section-header">
-                <h2>Featured Projects</h2>
+                <h2>Research Projects</h2>
             </div>
             <div class="grid">
+
                 <div class="card">
                     <div class="card-content">
-                        <h3>Pangenome of 'Candidatus Liberibacter asiaticus' (CLas)</h3>
-                        <p>Unraveling the genomic diversity of the bacterium causing citrus greening (HLB). This project aims to identify virulence factors and guide the development of new control strategies.</p>
+                        <h3>Comparative genomics of the nitroplast</h3>
+                        <p>The diazotroph *Candidatus Atelocyanobacterium thalassae* (UCYN-A) has evolved into a nitrogen-fixing organelle, the nitroplast. Our pangenome analysis revealed extensive metabolic reduction and a previously unrecognized divergence within the genus, leading us to propose two distinct species: *Ca. A. thalassae* and *Ca. A. braarudosphaerae sp. nov.*</p>
+                    </div>
+                    <div class="project-images">
+                        <img src="placeholder.jpg" alt="Phylogenomic tree of UCYN-A">
+                        <img src="placeholder.jpg" alt="Metabolic pathway comparison">
                     </div>
                 </div>
+
                 <div class="card">
                     <div class="card-content">
-                        <h3>Rethinking Methanobrevibacter smithii</h3>
-                        </h3> <img src="M_smithii_pangenome.png" alt="Pangenoma de CLas" style="width: 100%; max-height: 150px; object-fit: contain; margin-bottom: 0.5rem;">
-                        <p>Using comparative genomics to reveal that this human-associated archaeon comprises two distinct species, challenging traditional classification and opening new questions about its role in health.</p>
+                        <h3>Revealing Two Species within *Methanobrevibacter smithii*</h3>
+                        <p>This study moves beyond 16S rRNA by using comparative genomics and ANI analysis on 94 genomes to reclassify *M. smithii*. We uncovered significant divergence, leading to its reclassification into two species: *M. smithii* and *Candidatus M. intestini*. We also identified genes related to antibiotic resistance and pathogenicity.</p>
+                    </div>
+                     <div class="project-images">
+                        <img src="placeholder.jpg" alt="ANI heatmap of M. smithii genomes">
+                        <img src="placeholder.jpg" alt="Pathogenicity gene clusters">
                     </div>
                 </div>
+
                 <div class="card">
                     <div class="card-content">
-                        <h3>Probiotic Potential of Lactiplantibacillus plantarum HCA1</h3>
-                        <p>Genomic characterization of a bacterial strain with high probiotic and antimicrobial potential, positioning it as a promising candidate for health and food preservation applications.</p>
+                        <h3>Genomics of *Lactiplantibacillus plantarum* HCA1</h3>
+                        <p>This study examines HCA1, a lactic acid bacterium from pig manure. Its 3.28 Mb genome contains multiple plantaricin genes for antimicrobial activity and genes for acid/bile tolerance, supporting its probiotic potential. Its open pangenome suggests genomic plasticity, making it a strong candidate for improving gut health and food safety.</p>
+                    </div>
+                    <div class="project-images">
+                        <img src="placeholder.jpg" alt="Circular genome of L. plantarum HCA1">
+                        <img src="placeholder.jpg" alt="Pangenome analysis of HCA1">
                     </div>
                 </div>
-                 <div class="card">
-                    <div class="card-content">
-                        <h3>Genetics of Aquatic Carnivorous Plants</h3>
-                        <p>A genomic study of *Utricularia* species in Colombia and Brazil to understand their diversity and evolution, revealing long-distance gene flow patterns, possibly mediated by birds.</p>
-                    </div>
-                </div>
+                
                 <div class="card">
                     <div class="card-content">
-                        <h3>Usiacurí Mineral Water Wells</h3>
-                        <p>Assessed the environmental potential and health risks of mineral water wells by investigating their microbiological and chemical composition to identify potential contaminants.</p>
+                        <h3>Pangenomics of *Candidatus Liberibacter asiaticus* (CLas)</h3>
+                        <p>This research involves a deep dive into the pangenome of *Ca. L. asiaticus*, the causative agent of citrus greening disease. The goal is to identify core genomic features, diversity, and virulence factors to inform future control strategies for this devastating agricultural pathogen.</p>
+                        <p class="status-tag">[In Progress]</p>
+                    </div>
+                    <div class="project-images">
+                        <img src="placeholder.jpg" alt="CLas pangenome graph">
+                        <img src="placeholder.jpg" alt="Comparative analysis of CLas strains">
                     </div>
                 </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Phylo-pangenomics of the *Halobacterium* Genus</h3>
+                        <p>An ongoing comprehensive analysis of the *Halobacterium* genus using phylo-pangenomic approaches. This research aims to understand its evolutionary dynamics, genetic repertoire, and adaptations to extreme saline environments.</p>
+                        <p class="status-tag">[Results Pending]</p>
+                    </div>
+                    <div class="project-images">
+                        <img src="placeholder.jpg" alt="Halobacterium pangenome structure">
+                        <img src="placeholder.jpg" alt="Phylogenetic tree of Halobacterium genus">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Comparative Genomics of *Vreelandella venusta*</h3>
+                        <p>This project focuses on the comparative pangenomics of *Vreelandella venusta*, using a newly sequenced strain from a saline environment to explore its unique metabolic capabilities and adaptations to hypersaline conditions.</p>
+                        <p class="status-tag">[In Progress]</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Population Genetics of Aquatic Carnivorous Plants</h3>
+                        <p>This genomic study investigated the genetic diversity of the carnivorous plants *Utricularia foliosa* and *U. gibba* in Brazil and Colombia. Using Genotype-by-Sequencing (GBS), our analysis revealed geographic clustering and complex genetic structuring, highlighting significant diversity and long-distance, avian-mediated gene flow.</p>
+                    </div>
+                    <div class="project-images">
+                        <img src="placeholder.jpg" alt="Utricularia plant photo">
+                        <img src="placeholder.jpg" alt="Population structure plot">
+                    </div>
+                </div>
+
                 <div class="card">
                     <div class="card-content">
                         <h3>Microbial Diversity in a Mexican Cloud Forest</h3>
-                        <p>Characterized the bacterial and fungal diversity in an undisturbed montane cloud forest in Oaxaca, Mexico, revealing a high prevalence of key functional species like phosphate solubilizers.</p>
+                        <p>This study evaluated the bacterial and fungal communities in a pristine montane cloud forest in Oaxaca. We revealed a high prevalence of entomopathogenic fungi (like *Tolypocladium*) and potential phosphate-solubilizing bacteria (*Pseudomonas* and *Bacillus*), highlighting the need for in-situ conservation.</p>
+                    </div>
+                    <div class="project-images">
+                        <img src="placeholder.jpg" alt="Oaxaca cloud forest">
+                        <img src="placeholder.jpg" alt="Microbial culture plates">
                     </div>
                 </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Usiacurí Mineral Water Wells</h3>
+                        <p>This project assessed the environmental potential and health risks of mineral water wells in Usiacurí, Colombia. It involved investigating their microbiological and chemical composition to identify contaminants like pathogens and toxic substances, contributing to policies for safe water supply.</p>
+                    </div>
+                    <div class="project-images">
+                        <img src="placeholder.jpg" alt="Usiacurí mineral well">
+                        <img src="placeholder.jpg" alt="Water sample analysis">
+                    </div>
+                </div>
+
                 <div class="card">
                     <div class="card-content">
                         <h3>Propagation of Ornamental Plants</h3>
-                        <p>Focused on optimizing growth and reproduction methods for ornamental plants and succulents, exploring techniques like cuttings, grafting, and seed propagation to improve yield and quality.</p>
+                        <p>This project focused on optimizing growth and reproduction methods for ornamental plants and succulents. We explored techniques like cuttings, grafting, and seed propagation to develop efficient and sustainable practices for the horticultural industry.</p>
+                    </div>
+                    <div class="project-images">
+                        <img src="placeholder.jpg" alt="Succulent propagation">
+                        <img src="placeholder.jpg" alt="Ornamental plant cuttings">
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <section id="publications" class="container">
+        <section id="reviews" class="container">
             <div class="section-header">
-                <h2>Key Publications</h2>
+                <h2>Review Articles</h2>
             </div>
             <div class="grid">
-                 <div class="card">
+                <div class="card">
                     <div class="card-content">
-                        <h4>Aquifers and Groundwater: Challenges in Water Resource Management in Colombia</h4>
-                        <p class="publication-meta">Water, 2024</p>
-                        <p>A review on the importance and challenges of aquifer management in developing countries like Colombia.</p>
+                        <h3>The Pangenome: A Statistical Model</h3>
+                        <p>This review provides an overview of the pangenomic landscape, emphasizing that the pangenome is a statistical model dependent on dataset quality and taxonomic resolution. We discuss the transition to nuanced, ecologically-driven models and highlight unique challenges and insights from the under-explored archaeal pangenome.</p>
                     </div>
-                    <a href="https://doi.org/10.3390/w16050685" target="_blank">Read More <i class="fas fa-external-link-alt"></i></a>
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <h4>Human associated Archaea: a neglected microbiome worth investigating</h4>
-                        <p class="publication-meta">World Journal of Microbiology and Biotechnology, 2024</p>
-                        <p>This work highlights the importance of the human archaeome, an understudied field, and its potential role in health.</p>
+                        <h3>Human-Associated Archaea: A Neglected Microbiome</h3>
+                        <p>Archaea colonize various human body sites, yet the archaeome remains poorly studied despite its potential role in health and disease. This review covers their transmission, involvement in conditions like periodontitis, and the need for further studies to understand their precise mechanisms and impact.</p>
                     </div>
-                    <a href="https://doi.org/10.1007/s11274-023-03842-7" target="_blank">Read More <i class="fas fa-external-link-alt"></i></a>
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <h4>Soil culturable microbial diversity in an undisturbed montane cloud forest of Oaxaca, Mexico</h4>
-                        <p class="publication-meta">Revista Mexicana de Biodiversidad, 2023</p>
-                        <p>Evaluation of microbial diversity in a montane cloud forest, revealing a high prevalence of functional species.</p>
+                        <h3>The Genus *Utricularia* in Colombia</h3>
+                        <p>These carnivorous plants are indicators of water quality and hold biotechnological potential. This review analyzes the state of knowledge of the 41 *Utricularia* species in Colombia, highlighting the need for more research into their genomics, ecological roles, and potential for nature-based solutions.</p>
                     </div>
-                    <a href="https://doi.org/10.22201/ib.20078706e.2023.94.4980" target="_blank">Read More <i class="fas fa-external-link-alt"></i></a>
                 </div>
             </div>
         </section>
@@ -389,16 +375,16 @@
             <div class="skills-container">
                 <span class="skill-tag">Genomics</span>
                 <span class="skill-tag">Metagenomics</span>
+                <span class="skill-tag">Pangenomics</span>
                 <span class="skill-tag">Bioinformatics</span>
                 <span class="skill-tag">Python</span>
                 <span class="skill-tag">R</span>
                 <span class="skill-tag">Linux</span>
-                <span class="skill-tag">PCR & Sequencing</span>
-                <span class="skill-tag">Anvi'o & Prokka</span>
-                <span class="skill-tag">Microbial Culture</span>
-                <span class="skill-tag">Bioprospecting</span>
+                <span class="skill-tag">Comparative Genomics</span>
                 <span class="skill-tag">Phylogenetics</span>
-                <span class="skill-tag">Pangenomics</span>
+                <span class="skill-tag">Microbial Culture</span>
+                <span class="skill-tag">PCR & Sequencing</span>
+                <span class="skill-tag">Bioprospecting</span>
             </div>
         </section>
         
