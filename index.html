@@ -45,6 +45,11 @@
         .hero-text p { font-size: 1.1rem; color: var(--color-texto-secundario); }
         .hero-image img { width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 5px solid var(--color-primario); box-shadow: var(--sombra); }
         
+        /* --- Gallery Section --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .gallery-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-superficie); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .gallery-grid img:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
+
         /* --- Timeline (Experience & Education) --- */
         .timeline { position: relative; max-width: 800px; margin: 0 auto; }
         .timeline::after { content: ''; position: absolute; width: 3px; background-color: var(--color-superficie); top: 0; bottom: 0; left: 50%; margin-left: -1.5px; }
@@ -107,6 +112,7 @@
         <a href="#" class="logo">AG</a>
         <nav class="main-nav" id="main-nav-menu">
             <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
             <a href="#publications">Publications</a>
@@ -133,6 +139,16 @@
             <p style="text-align: center; max-width: 800px; margin: 0 auto;">
                 I am a Microbiologist with a B.Sc. from Simón Bolívar University. Currently, I am a CAPES scholar pursuing a Master's degree in Genetics and Plant Breeding at São Paulo State University (UNESP). I am also an active researcher at CBioClima - Center for Research in Biodiversity and Climate Change. My work integrates genomics, bioinformatics, and molecular biology to explore microbial communities, with the goal of developing innovative and sustainable biotechnological solutions.
             </p>
+        </section>
+        
+        <section id="gallery" class="container">
+            <div class="section-header"><h2>My Work in Action</h2></div>
+            <div class="gallery-grid">
+                <img src="placeholder.jpg" alt="Working in the lab">
+                <img src="placeholder.jpg" alt="Field work">
+                <img src="placeholder.jpg" alt="Presenting at a conference">
+                <img src="placeholder.jpg" alt="Analyzing data">
+            </div>
         </section>
 
         <section id="experience" class="container">
@@ -182,14 +198,14 @@
                 <div class="card">
                     <div class="card-content">
                         <h3>Comparative Genomics of the Nitroplast</h3>
-                        <p>Pangenome analysis of *Candidatus Atelocyanobacterium thalassae* (UCYN-A) revealed extensive metabolic reduction and a divergence that led us to propose two distinct species: *Ca. A. thalassae* and *Ca. A. braarudosphaerae sp. nov.*</p>
+                        <p>Pangenome analysis of *Candidatus Atelocyanobacterium thalassae* (UCYN-A) revealed extensive metabolic reduction and a divergence that led us to propose two distinct species.</p>
                     </div>
                     <div class="project-images"><img src="placeholder.jpg" alt="Result 1"><img src="placeholder.jpg" alt="Result 2"></div>
                 </div>
                 <div class="card">
                     <div class="card-content">
                         <h3>Revealing Two Species within *Methanobrevibacter smithii*</h3>
-                        <p>Using comparative genomics and ANI, we reclassified *M. smithii* into two species: *M. smithii* and *Candidatus M. intestini*, also identifying antibiotic resistance and pathogenicity genes.</p>
+                        <p>Using comparative genomics and ANI, we reclassified *M. smithii* into two species, also identifying antibiotic resistance and pathogenicity genes.</p>
                     </div>
                     <div class="project-images"><img src="placeholder.jpg" alt="Result 1"><img src="placeholder.jpg" alt="Result 2"></div>
                 </div>
@@ -203,7 +219,7 @@
                 <div class="card">
                     <div class="card-content">
                         <h3>Population Genetics of Aquatic Carnivorous Plants</h3>
-                        <p>This genomic study of *Utricularia foliosa* and *U. gibba* in Brazil and Colombia revealed geographic clustering and complex genetic structuring, highlighting high diversity and long-distance, avian-mediated gene flow.</p>
+                        <p>This genomic study of *Utricularia* in Brazil and Colombia revealed geographic clustering and complex genetic structuring, highlighting high diversity and long-distance, avian-mediated gene flow.</p>
                     </div>
                     <div class="project-images"><img src="placeholder.jpg" alt="Result 1"><img src="placeholder.jpg" alt="Result 2"></div>
                 </div>
@@ -233,7 +249,7 @@
                 <div class="card">
                     <div class="card-content">
                         <h3>Halophilic Archaea from the Galerazamba Salterns</h3>
-                        <p>[Add a brief project description here].</p>
+                        <p>Isolation and characterization of halophilic archaea from a unique hypersaline environment to explore their biodiversity and biotechnological potential.</p>
                     </div>
                      <div class="project-images"><img src="placeholder.jpg" alt="Result 1"><img src="placeholder.jpg" alt="Result 2"></div>
                 </div>
@@ -241,6 +257,20 @@
                     <div class="card-content">
                         <h3>Usiacurí Mineral Water Wells</h3>
                         <p>Assessment of the environmental potential and health risks of mineral water wells in Usiacurí, Colombia, through microbiological and chemical analyses.</p>
+                    </div>
+                     <div class="project-images"><img src="placeholder.jpg" alt="Result 1"><img src="placeholder.jpg" alt="Result 2"></div>
+                </div>
+                 <div class="card">
+                    <div class="card-content">
+                        <h3>Bacterial & Fungal Diversity in Oaxaca</h3>
+                        <p>An investigation into the soil microbial communities of a montane cloud forest in Oaxaca, Mexico, exploring the diversity and ecological roles of bacteria and fungi in this unique ecosystem.</p>
+                    </div>
+                     <div class="project-images"><img src="placeholder.jpg" alt="Result 1"><img src="placeholder.jpg" alt="Result 2"></div>
+                </div>
+                 <div class="card">
+                    <div class="card-content">
+                        <h3>Propagation of Ornamental & Succulent Plants</h3>
+                        <p>A horticultural project focused on optimizing propagation techniques for various ornamental plants and succulents, exploring methods to improve growth and yield.</p>
                     </div>
                      <div class="project-images"><img src="placeholder.jpg" alt="Result 1"><img src="placeholder.jpg" alt="Result 2"></div>
                 </div>
@@ -261,14 +291,6 @@
                  <div class="item">
                     <p>Soil culturable microbial diversity in an undisturbed montane cloud forest of Oaxaca, Mexico.</p>
                     <span class="journal">REVISTA MEXICANA DE BIODIVERSIDAD (2023)</span>
-                </div>
-                <div class="item">
-                    <p>The Pangenome: A Statistical Model, Not a Fixed Biological Property.</p>
-                    <span class="journal">Review Article (2025)</span>
-                </div>
-                <div class="item">
-                    <p>The Genus Utricularia: Biodiversity, Ecological Significance, and Biotechnological Prospects in Colombia.</p>
-                     <span class="journal">Review Article</span>
                 </div>
                  <div class="item">
                     <p>Microalgae: Potential for Bioeconomy in Food Systems.</p>
