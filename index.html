@@ -72,45 +72,61 @@
         .timeline-content h3 { color: var(--color-secundario); font-size: 1.2rem; }
         .timeline-content .period { font-size: 0.9rem; color: var(--color-texto-secundario); font-style: italic; }
 
-        /* --- Grid & Cards --- */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; }
-        .card { background-color: var(--color-superficie); border-radius: 10px; padding: 1.5rem; box-shadow: var(--sombra); transition: transform 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-10px); }
-        .card-content { flex-grow: 1; font-size: 0.95rem; color: var(--color-texto-secundario); }
-        .card h3 { color: var(--color-secundario); margin-bottom: 0.75rem; font-size: 1.25rem; }
-        .status-tag { font-style: italic; color: var(--color-secundario); font-size: 0.9rem; margin-top: 0.5rem; }
+        /* --- Project List Styling --- */
+        .project-item {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        .project-item--reverse {
+            flex-direction: row-reverse;
+        }
+        .project-text, .project-carousel-wrapper {
+            flex: 1; /* Each takes up half the space */
+        }
+        .project-text h3 {
+            font-size: 1.8rem;
+            color: var(--color-secundario);
+            margin-bottom: 1rem;
+        }
+        .project-text p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-texto-secundario);
+        }
 
         /* --- Project Carousel Styling --- */
         .project-carousel {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 1rem;
         }
         .glide__slide {
             text-align: center;
         }
         .glide__slide img {
             width: 100%;
-            height: 240px; /* Increased height for better view */
-            object-fit: contain; /* Use 'contain' to see the whole image */
-            border-radius: 5px;
+            height: 280px;
+            object-fit: contain;
+            border-radius: 8px;
             background-color: var(--color-fondo);
             margin-bottom: 0.75rem;
+            border: 1px solid #333;
         }
         .figure-caption {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--color-texto-secundario);
             line-height: 1.5;
-            height: 110px; /* Fixed height to prevent size changes */
-            overflow: auto; /* Add scroll if text is too long */
+            height: 90px;
+            overflow: auto;
         }
         .glide__arrow {
             box-shadow: none;
             border: 1px solid var(--color-texto-secundario);
             color: var(--color-texto-secundario);
         }
-        .glide__arrow--left { left: -30px; }
-        .glide__arrow--right { right: -30px; }
+        .glide__arrow--left { left: -40px; }
+        .glide__arrow--right { right: -40px; }
+        .status-tag { font-style: italic; color: var(--color-secundario); font-size: 0.9rem; margin-top: 1rem; display: inline-block;}
 
         /* --- Field Expeditions Section --- */
         .expedition-block {
@@ -128,7 +144,7 @@
         .expedition-block p {
             color: var(--color-texto-secundario);
             margin-bottom: 1.5rem;
-            max-width: 80ch; /* Limita el ancho para mejor legibilidad */
+            max-width: 80ch;
         }
         .expedition-photos-grid {
             display: grid;
@@ -177,6 +193,12 @@
             .timeline-item.left, .timeline-item.right { left: 0; }
             .timeline-item.right::after, .timeline-item.left::after { left: 10px; }
             .timeline-item.right::before, .timeline-item.left::before { left: 25px; border-width: 10px 10px 10px 0; border-color: transparent var(--color-superficie) transparent transparent; }
+            .project-item, .project-item--reverse {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .glide__arrow--left { left: 5px; }
+            .glide__arrow--right { right: 5px; }
         }
     </style>
 </head>
@@ -296,134 +318,204 @@
 
         <section id="projects" class="container">
             <div class="section-header"><h2>Research Projects</h2></div>
-            <div class="grid">
+            <div class="project-list">
 
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Comparative Genomics of the Nitroplast</h3>
-                        <p>Pangenome analysis of *Candidatus Atelocyanobacterium thalassae* (UCYN-A) revealed extensive metabolic reduction and a divergence that led us to propose two distinct species.</p>
-                    </div>
-                    <div class="project-carousel">
-                        <div class="glide">
-                            <div class="glide__track" data-glide-el="track">
-                                <ul class="glide__slides">
-                                    <li class="glide__slide">
-                                        <img src="placeholder_1.jpg" alt="Figure 1">
-                                        <p class="figure-caption">[Add description for Figure 1 here]</p>
-                                    </li>
-                                    <li class="glide__slide">
-                                        <img src="placeholder_2.jpg" alt="Figure 2">
-                                        <p class="figure-caption">[Add description for Figure 2 here]</p>
-                                    </li>
-                                    <li class="glide__slide">
-                                        <img src="placeholder_3.jpg" alt="Figure 3">
-                                        <p class="figure-caption">[Add description for Figure 3 here]</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="glide__arrows" data-glide-el="controls">
-                                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+                <div class="project-item">
+                    <div class="project-carousel-wrapper">
+                        <div class="project-carousel">
+                            <div class="glide">
+                                <div class="glide__track" data-glide-el="track"><ul class="glide__slides"><li class="glide__slide"><img src="placeholder_1.jpg" alt="Figure 1"><p class="figure-caption">[Add description for Figure 1 here]</p></li><li class="glide__slide"><img src="placeholder_2.jpg" alt="Figure 2"><p class="figure-caption">[Add description for Figure 2 here]</p></li><li class="glide__slide"><img src="placeholder_3.jpg" alt="Figure 3"><p class="figure-caption">[Add description for Figure 3 here]</p></li></ul></div>
+                                <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Revealing Two Species within *Methanobrevibacter smithii*</h3>
-                        <p>Using comparative genomics and ANI, we reclassified *M. smithii* into two species, also identifying antibiotic resistance and pathogenicity genes.</p>
-                    </div>
-                    <div class="project-carousel">
-                        <div class="glide">
-                            <div class="glide__track" data-glide-el="track">
-                                <ul class="glide__slides">
-                                    <li class="glide__slide">
-                                        <img src="placeholder_1.jpg" alt="Figure 1">
-                                        <p class="figure-caption">[Add description for Figure 1 here]</p>
-                                    </li>
-                                    <li class="glide__slide">
-                                        <img src="placeholder_2.jpg" alt="Figure 2">
-                                        <p class="figure-caption">[Add description for Figure 2 here]</p>
-                                    </li>
-                                    <li class="glide__slide">
-                                        <img src="placeholder_3.jpg" alt="Figure 3">
-                                        <p class="figure-caption">[Add description for Figure 3 here]</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="glide__arrows" data-glide-el="controls">
-                                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
-                            </div>
-                        </div>
+                    <div class="project-text">
+                        <h3>Genomic characterization of *Vreelandella venusta* isolated from the Galerazamba Solar Saltern</h3>
+                        <p>[Add a brief abstract or summary for this project here]</p>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Genomics of *Lactiplantibacillus plantarum* HCA1</h3>
-                        <p>The genome of this strain, isolated from pig manure, contains multiple plantaricin and stress tolerance genes, supporting its probiotic potential for gut health and food safety.</p>
-                    </div>
-                    <div class="project-carousel">
-                        <div class="glide">
-                            <div class="glide__track" data-glide-el="track">
-                                <ul class="glide__slides">
-                                    <li class="glide__slide">
-                                        <img src="placeholder_1.jpg" alt="Figure 1">
-                                        <p class="figure-caption">[Add description for Figure 1 here]</p>
-                                    </li>
-                                    <li class="glide__slide">
-                                        <img src="placeholder_2.jpg" alt="Figure 2">
-                                        <p class="figure-caption">[Add description for Figure 2 here]</p>
-                                    </li>
-                                    <li class="glide__slide">
-                                        <img src="placeholder_3.jpg" alt="Figure 3">
-                                        <p class="figure-caption">[Add description for Figure 3 here]</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="glide__arrows" data-glide-el="controls">
-                                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+                <div class="project-item project-item--reverse">
+                    <div class="project-carousel-wrapper">
+                        <div class="project-carousel">
+                            <div class="glide">
+                                <div class="glide__track" data-glide-el="track"><ul class="glide__slides"><li class="glide__slide"><img src="placeholder_1.jpg" alt="Figure 1"><p class="figure-caption">[Add description for Figure 1 here]</p></li><li class="glide__slide"><img src="placeholder_2.jpg" alt="Figure 2"><p class="figure-caption">[Add description for Figure 2 here]</p></li><li class="glide__slide"><img src="placeholder_3.jpg" alt="Figure 3"><p class="figure-caption">[Add description for Figure 3 here]</p></li></ul></div>
+                                <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
                             </div>
                         </div>
+                    </div>
+                    <div class="project-text">
+                        <h3>The Pangenome: A Statistical Model</h3>
+                        <p>[Add a brief abstract or summary for this project here]</p>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Analysis of the *Halobacterium* Genus</h3>
-                        <p>A comprehensive analysis of the *Halobacterium* genus using phylo-pangenomic approaches to understand its evolutionary dynamics and adaptations to extreme environments.</p>
-                        <p class="status-tag">[Results Pending]</p>
-                    </div>
-                    <div class="project-carousel">
-                        <div class="glide">
-                            <div class="glide__track" data-glide-el="track">
-                                <ul class="glide__slides">
-                                    <li class="glide__slide">
-                                        <img src="Isolated_cultiure.jpg" alt="Isolation and characterization of haloarchaeal oMaY14 isolate">
-                                        <p class="figure-caption"><strong>Fig. 1: Isolate Characterization.</strong> (A) Streaking in MGM 25%. (B) Pink-reddish circular colonies. (C) Salt crystal with colonies. (D) General view on petri dish. (E) Growth in varied MGM concentrations. (F) Culture progression over 2 weeks.</p>
-                                    </li>
-                                    <li class="glide__slide">
-                                        <img src="Carotenoid.jpg" alt="Isolation and characterization of carotenoid">
-                                        <p class="figure-caption"><strong>Fig. 2: Carotenoid Analysis.</strong> (A) Purified carotenoids. (B) UV-visible absorption spectra showing peaks at 466, 492, and 545 nm. (C) Raman spectra with peaks detected at 1515, 1156, and 1009 cm-1.</p>
-                                    </li>
-                                    <li class="glide__slide">
-                                        <img src="Halobacterium_pangenome.jpg" alt="Pangenome of Halobacterium species">
-                                        <p class="figure-caption"><strong>Fig. 3: Pangenome Visualization.</strong> Pangenome of 47 *Halobacterium* genomes via anvi'o, showing gene clusters, core genes (red), genomic stats, and a phylogenomic tree based on 76 core genes.</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="glide__arrows" data-glide-el="controls">
-                                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+                <div class="project-item">
+                    <div class="project-carousel-wrapper">
+                        <div class="project-carousel">
+                            <div class="glide">
+                                <div class="glide__track" data-glide-el="track"><ul class="glide__slides"><li class="glide__slide"><img src="placeholder_1.jpg" alt="Figure 1"><p class="figure-caption">[Add description for Figure 1 here]</p></li><li class="glide__slide"><img src="placeholder_2.jpg" alt="Figure 2"><p class="figure-caption">[Add description for Figure 2 here]</p></li><li class="glide__slide"><img src="placeholder_3.jpg" alt="Figure 3"><p class="figure-caption">[Add description for Figure 3 here]</p></li></ul></div>
+                                <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
                             </div>
                         </div>
                     </div>
+                    <div class="project-text">
+                        <h3>The genus *Utricularia* in a neotropical biodiversity hotspot: an updated checklist for Colombia</h3>
+                        <p>[Add a brief abstract or summary for this project here]</p>
+                    </div>
                 </div>
-                
+
+                <div class="project-item project-item--reverse">
+                    <div class="project-carousel-wrapper">
+                        <div class="project-carousel">
+                            <div class="glide">
+                                <div class="glide__track" data-glide-el="track"><ul class="glide__slides"><li class="glide__slide"><img src="placeholder_1.jpg" alt="Figure 1"><p class="figure-caption">[Add description for Figure 1 here]</p></li><li class="glide__slide"><img src="placeholder_2.jpg" alt="Figure 2"><p class="figure-caption">[Add description for Figure 2 here]</p></li><li class="glide__slide"><img src="placeholder_3.jpg" alt="Figure 3"><p class="figure-caption">[Add description for Figure 3 here]</p></li></ul></div>
+                                <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-text">
+                        <h3>*Candidatus Liberibacter asiaticus*: A large-scale comparative genomic analysis</h3>
+                        <p>[Add a brief abstract or summary for this project here]</p>
+                    </div>
                 </div>
+
+                <div class="project-item">
+                    <div class="project-carousel-wrapper">
+                        <div class="project-carousel">
+                            <div class="glide">
+                                <div class="glide__track" data-glide-el="track"><ul class="glide__slides"><li class="glide__slide"><img src="placeholder_1.jpg" alt="Figure 1"><p class="figure-caption">[Add description for Figure 1 here]</p></li><li class="glide__slide"><img src="placeholder_2.jpg" alt="Figure 2"><p class="figure-caption">[Add description for Figure 2 here]</p></li><li class="glide__slide"><img src="placeholder_3.jpg" alt="Figure 3"><p class="figure-caption">[Add description for Figure 3 here]</p></li></ul></div>
+                                <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-text">
+                        <h3>Exploring the pangenome of *Candidatus Atelocyanobacterium thalassa* (UCYN-A)</h3>
+                        <p>[Add a brief abstract or summary for this project here]</p>
+                    </div>
+                </div>
+
+                <div class="project-item project-item--reverse">
+                    <div class="project-carousel-wrapper">
+                        <div class="project-carousel">
+                            <div class="glide">
+                                <div class="glide__track" data-glide-el="track"><ul class="glide__slides"><li class="glide__slide"><img src="placeholder_1.jpg" alt="Figure 1"><p class="figure-caption">[Add description for Figure 1 here]</p></li><li class="glide__slide"><img src="placeholder_2.jpg" alt="Figure 2"><p class="figure-caption">[Add description for Figure 2 here]</p></li><li class="glide__slide"><img src="placeholder_3.jpg" alt="Figure 3"><p class="figure-caption">[Add description for Figure 3 here]</p></li></ul></div>
+                                <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-text">
+                        <h3>Genomic and phylogenetic characterization of *Lactiplantibacillus plantarum* HCA1</h3>
+                        <p>[Add a brief abstract or summary for this project here]</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-carousel-wrapper">
+                        <div class="project-carousel">
+                            <div class="glide">
+                                <div class="glide__track" data-glide-el="track"><ul class="glide__slides"><li class="glide__slide"><img src="placeholder_1.jpg" alt="Figure 1"><p class="figure-caption">[Add description for Figure 1 here]</p></li><li class="glide__slide"><img src="placeholder_2.jpg" alt="Figure 2"><p class="figure-caption">[Add description for Figure 2 here]</p></li><li class="glide__slide"><img src="placeholder_3.jpg" alt="Figure 3"><p class="figure-caption">[Add description for Figure 3 here]</p></li></ul></div>
+                                <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-text">
+                        <h3>Comprehensive Analysis of the *Halobacterium* Genus through Phylo-pangenomic Approaches</h3>
+                        <p>Microbial species delineation has been transformed by the advent of genomics, overcoming the limitations of traditional markers like the 16S rRNA gene. In this study, a comprehensive phylo-pangenomic analysis of the Halobacterium genus was performed using 47 available genomes to assess its genomic diversity and refine its taxonomy. The genus pangenome consists of 13,283 gene clusters, with a core genome of only 827 gene clusters, indicating high genomic diversity. Analysis using Heaps' law yielded a gamma (γ) value of 0.681, confirming that Halobacterium possesses an open pangenome, whose gene pool will expand with the sequencing of new genomes. The phylogenomic analysis, based on 76 single-copy core proteins, coupled with Average Nucleotide Identity (ANI) calculations, allowed for a precise taxonomic re-evaluation. The strains Halobacterium sp. BOL4-2, GSL-19, and CBA1132 were found to exhibit ANI values >99% with Halobacterium salinarum genomes, and their classification within this species is proposed. Conversely, the H. salinarum NRC-34001 genome showed low identity with others of its species (80%) and a closer relationship to H. rubrum (83% ANI), suggesting the need for its taxonomic reclassification. These findings underscore the importance of genomic approaches for robust and accurate microbial classification.</p>
+                    </div>
+                </div>
+
+                <div class="project-item project-item--reverse">
+                    <div class="project-carousel-wrapper">
+                        <div class="project-carousel">
+                            <div class="glide">
+                                <div class="glide__track" data-glide-el="track"><ul class="glide__slides"><li class="glide__slide"><img src="Halobacterium_pangenome.jpg" alt="Figure 1"><p class="figure-caption">Pangenome of Halobacterium species (9 species, 47 genomes) generated by anvi’o. The arrangement of genomes is structured according to the presence/absence-based gene cluster tree. Each distinctive color is indicative of a different species. The outer rings encircle supplementary information concerning single-copy gene (SCG) clusters, the count of genes within each cluster, the number of contributing genomes, the maximum paralog count, functional homogeneity, comb homogeneity, and geometric homogeneity. Notably, the outermost red highlights denote the core genes. Additional pertinent details, such as total length, G+C content, completion status, redundancy, gene count, gene count per kbp, singleton gene clusters, and overall gene cluster count, are visually conveyed through the bar charts positioned along the middle-right segment of the figure. Additionally, the top-right corner showcases a heatmap illustrating the percentage identity derived from ANIb analysis with a >95% cutoff and phylogenomic tree based on 76 single-copy core genes for the archaeal domain.</p></li><li class="glide__slide"><img src="phylo_halobacte.png" alt="Figure 2"><p class="figure-caption">Phylogenomic tree based on 76 single-copy core proteins. This comprehensive approach encompassed a dataset of 47 strains, each representing distinct genomes from the Halobacterium genus. The figure also incorporates additional data layers, specifically related to completeness level and sequencing platform.</p></li></ul></div>
+                                <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-text">
+                        <h3>Isolation and Characterization of Halophilic Archaea from the Galerazamba Solar Saltern</h3>
+                        <p>Hypersaline environments, such as solar salterns, harbor microorganisms with unique adaptations and great biotechnological potential. Despite previous studies on bacteria in the Galerazamba salterns in Colombia, no archaeal isolates had been reported. This study reports the first isolation and characterization of a halophilic archaeon from this ecosystem. A strain, designated oMaY14, which forms circular, pink-reddish colonies, was isolated. Analysis of the 16S rRNA gene sequence identified it as a member of the Halobacterium genus, showing 99.84% identity with Halobacterium sp. strain NES11. The oMaY14 strain is capable of growing in a temperature range of 23 to 50°C, with optimal growth at 40°C, and at salt concentrations from 15% to 25%. Notably, the strain produces its distinctive pink-reddish pigmentation even under dark conditions. Analysis of the extracted pigments via UV-visible spectrophotometry revealed three characteristic absorption peaks at 466 nm, 492 nm, and 545 nm, corresponding to 13-cis-lycopene, all-trans-lycopene, and bacterioruberin, respectively. Raman spectroscopy confirmed the presence of bacterioruberin with prominent peaks at 1515 cm⁻¹ (C=C), 1156 cm⁻¹ (C–C), and 1009 cm⁻¹ (C=CH). This work describes a novel isolate with significant potential for the production of industrially relevant carotenoids.</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-carousel-wrapper">
+                        <div class="project-carousel">
+                            <div class="glide">
+                                <div class="glide__track" data-glide-el="track"><ul class="glide__slides"><li class="glide__slide"><img src="Isolated_cultiure.jpg" alt="Figure 1"><p class="figure-caption">Isolation and characterization of haloarchaeal oMaY14 isolate. (A) Streaking of oMaY14 in MGM 25%. (B) Circular colonies of oMaY14 displaying a pink-reddish. (C) Salt crystal with notablly colonies of oMaY14. (D) general view of oMaY14 on MGM 25% petri dish. (E) oMaY14 growth on MGM 15, 18, 20, 23, and 25% exhibiting a pink-reddish color. (F) progression of oMaY14 culture in 25% MGM over time: 5 days (2), 1 week (3), 2 weeks (4), and uninoculated media (1).</p></li><li class="glide__slide"><img src="Carotenoid.jpg" alt="Figure 2"><p class="figure-caption">Isolation and characterization of carotenoid isolated from haloarchaeal oMaY14 isolate. (A) The microcentrifuge tubes containing purified carotenoids with pink-redish color. (B) UV–visible absorption spectra of the purified carotenoids showing three carotenoid peaks at  466, 492 and 545 nm. (C) Raman spectra of carotenoid from haloarchaeal oMaY14 isolate. Raman peaks were detected at 1515, 1156 and 1009 cm-1.</p></li></ul></div>
+                                <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-text">
+                        <h3>Environmental potential and health risks of mineral water wells in the municipality of Usiacurí</h3>
+                        <p>[Add a brief abstract or summary for this project here]</p>
+                    </div>
+                </div>
+
+                <div class="project-item project-item--reverse">
+                    <div class="project-carousel-wrapper">
+                        <div class="project-carousel">
+                            <div class="glide">
+                                <div class="glide__track" data-glide-el="track"><ul class="glide__slides"><li class="glide__slide"><img src="placeholder_1.jpg" alt="Figure 1"><p class="figure-caption">[Add description for Figure 1 here]</p></li><li class="glide__slide"><img src="placeholder_2.jpg" alt="Figure 2"><p class="figure-caption">[Add description for Figure 2 here]</p></li><li class="glide__slide"><img src="placeholder_3.jpg" alt="Figure 3"><p class="figure-caption">[Add description for Figure 3 here]</p></li></ul></div>
+                                <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-text">
+                        <h3>Population genetics and conservation dynamics of aquatic carnivorous plants</h3>
+                        <p>[Add a brief abstract or summary for this project here]</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-carousel-wrapper">
+                        <div class="project-carousel">
+                            <div class="glide">
+                                <div class="glide__track" data-glide-el="track"><ul class="glide__slides"><li class="glide__slide"><img src="placeholder_1.jpg" alt="Figure 1"><p class="figure-caption">[Add description for Figure 1 here]</p></li><li class="glide__slide"><img src="placeholder_2.jpg" alt="Figure 2"><p class="figure-caption">[Add description for Figure 2 here]</p></li><li class="glide__slide"><img src="placeholder_3.jpg" alt="Figure 3"><p class="figure-caption">[Add description for Figure 3 here]</p></li></ul></div>
+                                <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-text">
+                        <h3>Beyond the classic 16S rRNA classification: revealing two distinct species within *Methanobrevibacter smithii*</h3>
+                        <p>[Add a brief abstract or summary for this project here]</p>
+                    </div>
+                </div>
+
+                <div class="project-item project-item--reverse">
+                    <div class="project-carousel-wrapper">
+                        <div class="project-carousel">
+                            <div class="glide">
+                                <div class="glide__track" data-glide-el="track"><ul class="glide__slides"><li class="glide__slide"><img src="placeholder_1.jpg" alt="Figure 1"><p class="figure-caption">[Add description for Figure 1 here]</p></li><li class="glide__slide"><img src="placeholder_2.jpg" alt="Figure 2"><p class="figure-caption">[Add description for Figure 2 here]</p></li><li class="glide__slide"><img src="placeholder_3.jpg" alt="Figure 3"><p class="figure-caption">[Add description for Figure 3 here]</p></li></ul></div>
+                                <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-text">
+                        <h3>Bacterial and fungal diversity in a montane cloud forest in Oaxaca (Mexico)</h3>
+                        <p>[Add a brief abstract or summary for this project here]</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-carousel-wrapper">
+                        <div class="project-carousel">
+                            <div class="glide">
+                                <div class="glide__track" data-glide-el="track"><ul class="glide__slides"><li class="glide__slide"><img src="placeholder_1.jpg" alt="Figure 1"><p class="figure-caption">[Add description for Figure 1 here]</p></li><li class="glide__slide"><img src="placeholder_2.jpg" alt="Figure 2"><p class="figure-caption">[Add description for Figure 2 here]</p></li><li class="glide__slide"><img src="placeholder_3.jpg" alt="Figure 3"><p class="figure-caption">[Add description for Figure 3 here]</p></li></ul></div>
+                                <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-text">
+                        <h3>Propagation of ornamental and succulent plants</h3>
+                        <p>[Add a brief abstract or summary for this project here]</p>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <section id="expeditions" class="container">
