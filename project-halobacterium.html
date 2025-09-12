@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Halobacterium Analysis | Abraham Guerra Ospino</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/css/glide.theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
+    
+    <style>
+        :root {
+            --color-primario: #0a9396;
+            --color-secundario: #94d2bd;
+            --color-fondo: #121212;
+            --color-superficie: #1e1e1e;
+            --color-texto: #e0e0e0;
+            --color-texto-secundario: #a0a0a0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--color-fondo); color: var(--color-texto); line-height: 1.8; }
+        .container { width: 90%; max-width: 900px; margin: 0 auto; padding: 2rem 0 4rem 0; }
+        h1, h2, h3 { color: white; font-weight: 600; text-align: center; }
+        p { text-align: justify; color: var(--color-texto-secundario); }
+        .main-header { padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .main-header .logo { font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; }
+        .main-nav a { color: var(--color-texto); text-decoration: none; margin-left: 1.5rem; font-weight: 400; transition: color 0.3s ease; }
+        .main-nav a:hover { color: var(--color-secundario); }
+
+        .project-header {
+            padding-top: 8rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-superficie);
+        }
+        .project-header h1 {
+            font-size: 3rem;
+            color: var(--color-secundario);
+        }
+        .back-link {
+            display: inline-block;
+            color: var(--color-texto-secundario);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover {
+            color: var(--color-texto);
+        }
+
+        .project-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .glide__slide a { cursor: zoom-in; }
+        .glide__slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover; /* Cambiado a cover para llenar el espacio */
+            border-radius: 8px;
+            background-color: #000;
+            margin-bottom: 0.75rem;
+        }
+        .figure-caption { text-align: center; font-size: 0.9rem; }
+        .glide__arrow { border: 1px solid var(--color-texto-secundario); color: var(--color-texto-secundario); }
+        footer { text-align: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid rgba(255, 255, 255, 0.1); color: var(--color-texto-secundario); }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <a href="index.html" class="logo">AG</a>
+        <nav class="main-nav">
+            <a href="index.html#about">About</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#publications">Publications</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <a href="index.html#projects" class="back-link">← Back to All Projects</a>
+            <header class="project-header">
+                <h1>Characterization and Pangenomics of *Halobacterium* from an Unexplored Saltern</h1>
+            </header>
+
+            <div class="project-content baguette-gallery">
+                <p>
+                    This study reports the first isolation of a carotenoid-producing halophilic archaeon, strain oMaY14, from the Galerazamba Solar Saltern in Colombia. Identified as a member of the *Halobacterium* genus, this isolate produces bacterioruberin in high-salt conditions. To place this discovery in a broader context, a comprehensive phylo-pangenomic analysis of the *Halobacterium* genus was conducted using 47 genomes. The analysis revealed an open pangenome, indicating significant genomic diversity, and allowed for a precise taxonomic re-evaluation using ANI, leading to proposed reclassifications within the genus. This work combines novel isolation with large-scale comparative genomics to expand our understanding of these extremophiles.
+                </p>
+
+                <div class="glide">
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            <li class="glide__slide">
+                                <a href="Isolated_cultiure.jpg" title="Isolate Characterization">
+                                    <img src="Isolated_cultiure.jpg" alt="Isolation and characterization of haloarchaeal oMaY14 isolate">
+                                </a>
+                                <p class="figure-caption"><strong>Fig. 1: Isolate Characterization.</strong> Culture and colony morphology of the oMaY14 isolate.</p>
+                            </li>
+                            <li class="glide__slide">
+                                <a href="Halobacterium_pangenome.jpg" title="Pangenome Visualization">
+                                    <img src="Halobacterium_pangenome.jpg" alt="Pangenome of Halobacterium species">
+                                </a>
+                                <p class="figure-caption"><strong>Fig. 2: Pangenome Visualization.</strong> Pangenome of 47 *Halobacterium* genomes via anvi'o.</p>
+                            </li>
+                            <li class="glide__slide">
+                                 <a href="phylo_halobacte.png" title="Phylogenomic Tree">
+                                    <img src="phylo_halobacte.png" alt="Phylogenomic tree of Halobacterium species">
+                                </a>
+                                <p class="figure-caption"><strong>Fig. 3: Phylogenomic Tree.</strong> Tree based on 76 single-copy core proteins from 47 strains.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">&lt;</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&gt;">&gt;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Abraham David Guerra Ospino. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/glide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js" async></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const carousels = document.querySelectorAll('.glide');
+            if (carousels.length) {
+                new Glide(carousels[0]).mount();
+            }
+            baguetteBox.run('.baguette-gallery');
+        });
+    </script>
+</body>
+</html>
