@@ -49,17 +49,15 @@
         .back-link:hover {
             color: var(--color-texto);
         }
-
         .project-content p {
             font-size: 1.1rem;
             margin-bottom: 2rem;
         }
-
         .glide__slide a { cursor: zoom-in; }
         .glide__slide img {
             width: 100%;
             height: 400px;
-            object-fit: cover; /* Cambiado a cover para llenar el espacio */
+            object-fit: cover; /* Para llenar el espacio sin distorsionar */
             border-radius: 8px;
             background-color: #000;
             margin-bottom: 0.75rem;
@@ -91,7 +89,6 @@
                 <p>
                     This study reports the first isolation of a carotenoid-producing halophilic archaeon, strain oMaY14, from the Galerazamba Solar Saltern in Colombia. Identified as a member of the *Halobacterium* genus, this isolate produces bacterioruberin in high-salt conditions. To place this discovery in a broader context, a comprehensive phylo-pangenomic analysis of the *Halobacterium* genus was conducted using 47 genomes. The analysis revealed an open pangenome, indicating significant genomic diversity, and allowed for a precise taxonomic re-evaluation using ANI, leading to proposed reclassifications within the genus. This work combines novel isolation with large-scale comparative genomics to expand our understanding of these extremophiles.
                 </p>
-
                 <div class="glide">
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides">
@@ -133,9 +130,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const carousels = document.querySelectorAll('.glide');
-            if (carousels.length) {
-                new Glide(carousels[0]).mount();
-            }
+            if (carousels.length) { new Glide(carousels[0]).mount(); }
             baguetteBox.run('.baguette-gallery');
         });
     </script>
