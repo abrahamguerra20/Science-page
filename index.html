@@ -8,11 +8,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/css/glide.theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
 
     <style>
+        /* =================================
+           STYLES
+           ================================= */
         :root {
-            --color-primario: #0a9396; /* Azul Marino/Turquesa Oscuro */
-            --color-secundario: #94d2bd; /* Azul Turquesa Claro */
+            --color-primario: #4e54c8;
+            --color-secundario: #8f94fb;
             --color-fondo: #121212;
             --color-superficie: #1e1e1e;
             --color-texto: #e0e0e0;
@@ -22,64 +28,187 @@
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--color-fondo); color: var(--color-texto); line-height: 1.7; }
         .container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 4rem 0; }
-        h1, h2, h3, h4 { color: white; font-weight: 600; text-align: center; }
-        h2 { font-size: 2.5rem; border-bottom: 2px solid var(--color-primario); display: inline-block; padding-bottom: 0.5rem; }
-        p { text-align: justify; }
+        h1, h2, h3, h4 { color: white; font-weight: 600; }
+        h2 { font-size: 2.5rem; text-align: center; border-bottom: 2px solid var(--color-primario); display: inline-block; padding-bottom: 0.5rem; }
         .section-header { text-align: center; margin-bottom: 3rem; }
         
+        /* --- Header & Navigation --- */
         .main-header { position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(30, 30, 30, 0.85); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
         .main-header .logo { font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; }
+        .main-nav { display: flex; }
         .main-nav a { color: var(--color-texto); text-decoration: none; margin-left: 1.5rem; font-weight: 400; transition: color 0.3s ease; }
         .main-nav a:hover { color: var(--color-secundario); }
+        #menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
-        #hero { display: flex; align-items: center; justify-content: center; gap: 3rem; min-height: 100vh; padding-top: 80px; text-align: center; }
+        /* --- Hero Section --- */
+        #hero { display: flex; align-items: center; justify-content: center; gap: 3rem; min-height: 100vh; padding-top: 80px; }
+        .hero-text { max-width: 600px; }
         .hero-text h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 1rem; }
         .hero-text .subtitle { font-size: 1.5rem; color: var(--color-secundario); margin-bottom: 1.5rem; font-weight: 400; }
+        .hero-text p { font-size: 1.1rem; color: var(--color-texto-secundario); }
         .hero-image img { width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 5px solid var(--color-primario); box-shadow: var(--sombra); }
         
-        /* --- Project Link List Styling --- */
-        .project-link-list {
-            display: flex;
-            flex-direction: column;
+        /* --- Gallery Section --- */
+        .quote-subtitle { font-size: 1rem; font-style: italic; color: var(--color-texto-secundario); max-width: 700px; margin: -1rem auto 0 auto; line-height: 1.6; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .gallery-item { position: relative; border-radius: 8px; overflow: hidden; box-shadow: var(--sombra); cursor: pointer; }
+        .gallery-item img { width: 100%; height: 300px; object-fit: cover; transition: transform 0.4s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(18, 18, 18, 0.85); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; opacity: 0; transition: opacity 0.4s ease; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay h3 { color: var(--color-secundario); margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .gallery-overlay p { font-size: 0.9rem; color: var(--color-texto); }
+
+        /* --- Timeline (Experience & Education) --- */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::after { content: ''; position: absolute; width: 3px; background-color: var(--color-superficie); top: 0; bottom: 0; left: 50%; margin-left: -1.5px; }
+        .timeline-item { padding: 10px 40px; position: relative; background-color: inherit; width: 50%; }
+        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background-color: var(--color-fondo); border: 4px solid var(--color-primario); top: 25px; border-radius: 50%; z-index: 1; }
+        .timeline-item.left { left: 0; }
+        .timeline-item.right { left: 50%; }
+        .timeline-item.left::before { content: " "; height: 0; position: absolute; top: 32px; width: 0; z-index: 1; right: 30px; border: medium solid var(--color-superficie); border-width: 10px 0 10px 10px; border-color: transparent transparent transparent var(--color-superficie); }
+        .timeline-item.right::before { content: " "; height: 0; position: absolute; top: 32px; width: 0; z-index: 1; left: 30px; border: medium solid var(--color-superficie); border-width: 10px 10px 10px 0; border-color: transparent var(--color-superficie) transparent transparent; }
+        .timeline-item.right::after { left: -10px; }
+        .timeline-content { padding: 20px 30px; background-color: var(--color-superficie); position: relative; border-radius: 8px; }
+        .timeline-content h3 { color: var(--color-secundario); font-size: 1.2rem; }
+        .timeline-content .period { font-size: 0.9rem; color: var(--color-texto-secundario); font-style: italic; }
+
+        /* --- Project List Styling (Vertical Stack) --- */
+        .project-item-stacked {
+            background-color: var(--color-superficie);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--color-primario);
+        }
+        .project-item-stacked h3 {
+            font-size: 1.8rem;
+            color: var(--color-secundario);
+            margin-bottom: 1rem;
+        }
+        .project-item-stacked p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-texto-secundario);
+            max-width: 85ch; /* Limit text width for readability */
+        }
+        
+        /* --- Project Carousel Styling --- */
+        .project-carousel {
+            margin-top: 2rem;
+        }
+        .glide__slide a {
+            display: block;
+            cursor: zoom-in;
+        }
+        .glide__slide img {
+            width: 100%;
+            height: 350px;
+            object-fit: contain;
+            border-radius: 8px;
+            background-color: var(--color-fondo);
+            margin-bottom: 0.75rem;
+            border: 1px solid #333;
+        }
+        .figure-caption {
+            font-size: 0.85rem;
+            color: var(--color-texto-secundario);
+            line-height: 1.5;
+            height: 70px;
+            overflow: auto;
+        }
+        .glide__arrow {
+            box-shadow: none;
+            border: 1px solid var(--color-texto-secundario);
+            color: var(--color-texto-secundario);
+        }
+        .glide__arrow--left { left: 1rem; }
+        .glide__arrow--right { right: 1rem; }
+        .status-tag { font-style: italic; color: var(--color-secundario); font-size: 0.9rem; margin-top: 1rem; display: inline-block;}
+
+        /* --- Field Expeditions Section --- */
+        .expedition-block {
+            background-color: var(--color-superficie);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--color-primario);
+        }
+        .expedition-block h4 {
+            color: var(--color-secundario);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .expedition-block p {
+            color: var(--color-texto-secundario);
+            margin-bottom: 1.5rem;
+            max-width: 80ch;
+        }
+        .expedition-photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
         }
-        .project-link {
-            background-color: var(--color-superficie);
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--color-texto);
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-left: 4px solid transparent;
-            transition: all 0.3s ease;
-            text-align: left;
+        .expedition-photos-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 2px solid #333;
+            transition: transform 0.3s ease;
         }
-        .project-link:hover {
-            transform: translateX(10px);
-            border-left-color: var(--color-primario);
-            background-color: #2a2a2a;
-            color: var(--color-secundario);
+        .expedition-photos-grid img:hover {
+            transform: scale(1.05);
         }
 
-        /* --- Other sections --- */
-        .publication-list .item { background: var(--color-superficie); padding: 1rem; border-radius: 5px; margin-bottom: 1rem; border-left: 3px solid var(--color-primario); }
-        .publication-list .journal { font-weight: 600; color: var(--color-secundario); display: block; }
+        .publication-list .item, .awards-list .item { background: var(--color-superficie); padding: 1rem; border-radius: 5px; margin-bottom: 1rem; border-left: 3px solid var(--color-primario); }
+        .publication-list .journal, .awards-list .organization { font-weight: 600; color: var(--color-secundario); display: block; }
+        
+        /* --- Skills Section --- */
+        .skills-container { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+        .skill-tag { background-color: var(--color-superficie); padding: 0.5rem 1rem; border-radius: 20px; font-weight: 400; border: 1px solid var(--color-primario); transition: background-color 0.3s; }
+        .skill-tag:hover{ background-color: var(--color-primario); color: white; }
+
+        /* --- Contact & Footer --- */
         .contact-links { text-align: center; margin-top: 2rem; }
         .contact-links a { color: var(--color-texto-secundario); font-size: 2.5rem; margin: 0 1rem; transition: color 0.3s ease; }
         .contact-links a:hover { color: var(--color-secundario); }
         footer { text-align: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid rgba(255, 255, 255, 0.1); color: var(--color-texto-secundario); }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            #hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .hero-image img { width: 250px; height: 250px; }
+        }
+        @media (max-width: 768px) {
+            .main-nav { display: none; flex-direction: column; width: 100%; position: absolute; top: 70px; left: 0; background-color: rgba(30, 30, 30, 0.95); }
+            .main-nav.active { display: flex; }
+            .main-nav a { margin: 1rem; text-align: center; }
+            #menu-toggle { display: block; }
+            .timeline::after { left: 20px; }
+            .timeline-item { width: 100%; padding-left: 60px; padding-right: 15px; }
+            .timeline-item.left, .timeline-item.right { left: 0; }
+            .timeline-item.right::after, .timeline-item.left::after { left: 10px; }
+            .timeline-item.right::before, .timeline-item.left::before { left: 25px; border-width: 10px 10px 10px 0; border-color: transparent var(--color-superficie) transparent transparent; }
+        }
     </style>
 </head>
 <body>
+
     <header class="main-header">
-        <a href="index.html" class="logo">AG</a>
-        <nav class="main-nav">
-            <a href="index.html#about">About</a>
-            <a href="index.html#projects">Projects</a>
-            <a href="index.html#publications">Publications</a>
-            <a href="index.html#contact">Contact</a>
+        <a href="#" class="logo">AG</a>
+        <nav class="main-nav" id="main-nav-menu">
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#expeditions">Expeditions</a>
+            <a href="#publications">Publications</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
         </nav>
+        <button id="menu-toggle"><i class="fas fa-bars"></i></button>
     </header>
 
     <main>
@@ -87,40 +216,232 @@
             <div class="hero-text">
                 <h1>Abraham D. Guerra Ospino</h1>
                 <p class="subtitle">Microbiologist | Bioinformatician</p>
-                <div class="hero-image" style="margin: 2rem auto;">
-                    <img src="profile.jpg" alt="Photo of Abraham Guerra Ospino">
-                </div>
-                <p style="max-width: 60ch; margin: 0 auto;">My research focuses on Microbiomes, Pangenomics, and Metagenomics, with an emphasis on Comparative Genomics, Extremophiles, Archaea, and Plant-Associated Microbiomes.</p>
+                <p>My research focuses on Microbiomes, Pangenomics, and Metagenomics, with an emphasis on Comparative Genomics, Extremophiles, Archaea, and Plant-Associated Microbiomes.</p>
+            </div>
+            <div class="hero-image">
+                <img src="profile.jpg" alt="Photo of Abraham Guerra Ospino">
             </div>
         </section>
 
         <section id="about" class="container">
             <div class="section-header"><h2>About Me</h2></div>
-            <p style="text-align: justify; max-width: 800px; margin: 0 auto;">
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">
                 I am a Microbiologist with a B.Sc. from Simón Bolívar University. Currently, I am a CAPES scholar pursuing a Master's degree in Genetics and Plant Breeding at São Paulo State University (UNESP). I am also an active researcher at CBioClima - Center for Research in Biodiversity and Climate Change. My work integrates genomics, bioinformatics, and molecular biology to explore microbial communities, with the goal of developing innovative and sustainable biotechnological solutions.
             </p>
         </section>
         
+        <section id="gallery" class="container">
+            <div class="section-header">
+                <h2>Science in Action</h2>
+                <p class="quote-subtitle">"As we know, there are known knowns; there are things we know we know. There are also known unknowns: things we know we don't know. But there are also unknown unknowns — the ones we don't know we don't know."</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="lab_work.jpeg" alt="Working in the molecular biology lab">
+                    <div class="gallery-overlay">
+                        <h3>Precision in the Lab</h3>
+                        <p>Every drop counts. Handling reagents for molecular analysis, the foundation of modern genomics.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="field_work.jpeg" alt="Finding Utricularia foliosa in the field">
+                    <div class="gallery-overlay">
+                        <h3>The Thrill of Discovery</h3>
+                        <p>After hours of searching, the reward: finding *Utricularia foliosa* in its natural habitat. Field science at its best.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="presentation_conference.jpeg" alt="Presenting at the Caribbean Microbial Meeting 2024">
+                    <div class="gallery-overlay">
+                        <h3>Sharing the Science</h3>
+                        <p>Presenting our findings on *Methanobrevibacter smithii* at the Caribbean Microbial Meeting 2024. Connecting genomics with the scientific community.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="analyzing_data.jpeg" alt="Analyzing pangenomic data with Anvi'o">
+                    <div class="gallery-overlay">
+                        <h3>The Digital Challenge</h3>
+                        <p>The face of victory after days installing Anvi'o. Every headache was worth it to visualize pangenomics in a new way.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="container">
+            <div class="section-header"><h2>Experience & Education</h2></div>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Associate Researcher</h3>
+                        <p>Center for Research in Biodiversity and Climate Change (CBioClima), Brazil</p>
+                        <span class="period">Mar 2024 – Present</span>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>M.Sc. in Genetics and Plant Breeding</h3>
+                        <p>São Paulo State University (UNESP), Brazil</p>
+                        <span class="period">Mar 2024 – Ongoing</span>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Junior Researcher (Professional Contract)</h3>
+                        <p>Center for Research in Biodiversity and Climate Change - ADAPTIA, Colombia</p>
+                        <span class="period">Jun 2023 – Nov 2023</span>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Laboratory Assistant</h3>
+                        <p>Center for Research in Biodiversity and Climate Change - ADAPTIA, Colombia</p>
+                        <span class="period">Jan 2022 – Jan 2023</span>
+                    </div>
+                </div>
+                 <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>B.Sc. in Microbiology</h3>
+                        <p>Simón Bolivar University (USB), Colombia</p>
+                        <span class="period">Feb 2018 – Mar 2023</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="projects" class="container">
             <div class="section-header"><h2>Research Projects</h2></div>
-            <div class="project-link-list">
-                <a href="project-halobacterium.html" class="project-link">Characterization and Pangenomics of *Halobacterium* from an Unexplored Saltern</a>
-                <a href="project-vreelandella.html" class="project-link">Genomic characterization of *Vreelandella venusta*</a>
-                <a href="project-nitroplast.html" class="project-link">Exploring the pangenome of *Candidatus Atelocyanobacterium thalassa* (Nitroplast)</a>
+            
+            <div class="project-item-stacked baguette-gallery">
+                <h3>Characterization and Pangenomics of *Halobacterium* from an Unexplored Saltern</h3>
+                <p>This study reports the first isolation of a carotenoid-producing halophilic archaeon, strain oMaY14, from the Galerazamba Solar Saltern in Colombia. Identified as a member of the *Halobacterium* genus, this isolate produces bacterioruberin in high-salt conditions. To place this discovery in a broader context, a comprehensive phylo-pangenomic analysis of the *Halobacterium* genus was conducted using 47 genomes. The analysis revealed an open pangenome, indicating significant genomic diversity, and allowed for a precise taxonomic re-evaluation using ANI, leading to proposed reclassifications within the genus. This work combines novel isolation with large-scale comparative genomics to expand our understanding of these extremophiles.</p>
+                <div class="project-carousel">
+                    <div class="glide">
+                        <div class="glide__track" data-glide-el="track">
+                            <ul class="glide__slides">
+                                <li class="glide__slide">
+                                    <a href="Isolated_cultiure.jpg" title="Isolate Characterization">
+                                        <img src="Isolated_cultiure.jpg" alt="Isolation and characterization of haloarchaeal oMaY14 isolate">
+                                    </a>
+                                    <p class="figure-caption"><strong>Fig. 1: Isolate Characterization.</strong> Culture and colony morphology of the oMaY14 isolate.</p>
+                                </li>
+                                <li class="glide__slide">
+                                    <a href="Halobacterium_pangenome.jpg" title="Pangenome Visualization">
+                                        <img src="Halobacterium_pangenome.jpg" alt="Pangenome of Halobacterium species">
+                                    </a>
+                                    <p class="figure-caption"><strong>Fig. 2: Pangenome Visualization.</strong> Pangenome of 47 *Halobacterium* genomes via anvi'o.</p>
+                                </li>
+                                <li class="glide__slide">
+                                     <a href="phylo_halobacte.png" title="Phylogenomic Tree">
+                                        <img src="phylo_halobacte.png" alt="Phylogenomic tree of Halobacterium species">
+                                    </a>
+                                    <p class="figure-caption"><strong>Fig. 3: Phylogenomic Tree.</strong> A comprehensive tree based on 76 single-copy core proteins from 47 strains.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="glide__arrows" data-glide-el="controls">
+                            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="project-item-stacked baguette-gallery">
+                <h3>Genomic characterization of *Vreelandella venusta* isolated from the Galerazamba Solar Saltern</h3>
+                <p>[Add a brief abstract or summary for this project here]</p>
+                <div class="project-carousel">
+                    <div class="glide">
+                        <div class="glide__track" data-glide-el="track"><ul class="glide__slides">
+                            <li class="glide__slide"><a href="placeholder_1.jpg"><img src="placeholder_1.jpg" alt="Figure 1"></a><p class="figure-caption">[Add description for Figure 1]</p></li>
+                            <li class="glide__slide"><a href="placeholder_2.jpg"><img src="placeholder_2.jpg" alt="Figure 2"></a><p class="figure-caption">[Add description for Figure 2]</p></li>
+                        </ul></div>
+                        <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
+                    </div>
+                </div>
+            </div>
+            
+            </section>
+
+        <section id="expeditions" class="container">
+            <div class="section-header">
+                <h2>Field Expeditions</h2>
+            </div>
+            <div class="expedition-block">
+                <h4>Hunting for *Utricularia foliosa* in [Ciudad, Estado]</h4>
+                <p>A multi-day expedition to locate and collect samples of the aquatic carnivorous plant, *Utricularia foliosa*. This fieldwork was crucial for our population genetics studies and involved navigating challenging wetland environments to find these elusive specimens.</p>
+                <div class="expedition-photos-grid">
+                    <img src="placeholder_utri_1.jpg" alt="Vista panorámica del hábitat de Utricularia">
+                    <img src="placeholder_utri_2.jpg" alt="Muestra de Utricularia foliosa de cerca">
+                    <img src="placeholder_utri_3.jpg" alt="Equipo de campo preparando muestras">
+                    <img src="placeholder_utri_4.jpg" alt="Navegando el humedal para la colecta">
+                    <img src="placeholder_utri_5.jpg" alt="Yo sosteniendo una muestra colectada">
+                </div>
+            </div>
         </section>
 
         <section id="publications" class="container">
             <div class="section-header"><h2>Publications</h2></div>
             <div class="publication-list">
                 <div class="item">
-                    <p style="text-align: left;">Aquifers and Groundwater: Challenges and Opportunities in Water Resource Management in Colombia.</p>
+                    <p>Aquifers and Groundwater: Challenges and Opportunities in Water Resource Management in Colombia.</p>
                     <span class="journal">MDPI Water (2024)</span>
                 </div>
                  <div class="item">
-                    <p style="text-align: left;">Human associated Archaea: a neglected microbiome worth investigating.</p>
+                    <p>Human associated Archaea: a neglected microbiome worth investigating.</p>
                     <span class="journal">World Journal of Microbiology and Biotechnology (2024)</span>
                 </div>
+                 <div class="item">
+                    <p>Soil culturable microbial diversity in an undisturbed montane cloud forest of Oaxaca, Mexico.</p>
+                    <span class="journal">REVISTA MEXICANA DE BIODIVERSIDAD (2023)</span>
+                </div>
+                 <div class="item">
+                    <p>Microalgae: Potential for Bioeconomy in Food Systems.</p>
+                    <span class="journal">MDPI Applied Sciences (2021)</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="awards" class="container">
+            <div class="section-header"><h2>Awards & Honors</h2></div>
+            <div class="awards-list">
+                <div class="item">
+                    <p>Recognition for Scientific Research Impact</p>
+                    <span class="organization">Simón Bolívar University, Colombia (Nov 2024)</span>
+                </div>
+                 <div class="item">
+                    <p>Best Oral Presentation Award</p>
+                    <span class="organization">Caribbean Microbial Meeting 2023 (Nov 2023)</span>
+                </div>
+                 <div class="item">
+                    <p>Recognition for High Performance in Research</p>
+                    <span class="organization">Simón Bolívar University, Colombia (Nov 2023)</span>
+                </div>
+                 <div class="item">
+                    <p>Investigative Merit Award</p>
+                    <span class="organization">Simón Bolívar University (Mar 2023)</span>
+                </div>
+                 <div class="item">
+                    <p>Member of Research and Innovation Hotbed, Elite Category</p>
+                    <span class="organization">Simón Bolívar University (May 2021)</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="container">
+            <div class="section-header"><h2>Technical Skills</h2></div>
+            <div class="skills-container">
+                <span class="skill-tag">Genomics</span>
+                <span class="skill-tag">Metagenomics</span>
+                <span class="skill-tag">Pangenomics</span>
+                <span class="skill-tag">Bioinformatics</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">R</span>
+                <span class="skill-tag">Linux</span>
+                <span class="skill-tag">Comparative Genomics</span>
+                <span class="skill-tag">Phylogenetics</span>
+                <span class="skill-tag">Microbial Culture</span>
+                <span class="skill-tag">PCR & Sequencing</span>
+                <span class="skill-tag">Bioprospecting</span>
             </div>
         </section>
         
@@ -129,12 +450,51 @@
              <div class="contact-links">
                 <a href="mailto:abraham.guerra@unesp.br" aria-label="Academic Email"><i class="fas fa-envelope"></i></a>
                 <a href="https://github.com/abrahamguerra20" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-             </div>
+                <a href="https://www.researchgate.net/profile/Abraham-Guerra-3" target="_blank" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                <a href="https://orcid.org/0000-0003-4684-9440" target="_blank" aria-label="ORCID"><i class="fab fa-orcid"></i></a>
+            </div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2025 Abraham David Guerra Ospino. All rights reserved.</p>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/glide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js" async></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Main menu toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('main-nav-menu');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // Initialize all carousels
+            const carousels = document.querySelectorAll('.glide');
+            if (carousels.length) {
+                carousels.forEach(carousel => {
+                    new Glide(carousel, {
+                        type: 'carousel',
+                        startAt: 0,
+                        perView: 1,
+                        gap: 0
+                    }).mount();
+                });
+            }
+            
+            // Initialize all lightbox galleries
+            const galleries = document.querySelectorAll('.baguette-gallery');
+            if (galleries.length) {
+                galleries.forEach(gallery => {
+                    baguetteBox.run(gallery);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
