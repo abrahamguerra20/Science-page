@@ -73,33 +73,29 @@
         .timeline-content h3 { color: var(--color-secundario); font-size: 1.2rem; }
         .timeline-content .period { font-size: 0.9rem; color: var(--color-texto-secundario); font-style: italic; }
 
-        /* --- Project List Styling --- */
-        .project-item {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-            margin-bottom: 4rem;
+        /* --- Project List Styling (Vertical Stack) --- */
+        .project-item-stacked {
+            background-color: var(--color-superficie);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--color-primario);
         }
-        .project-item--reverse {
-            flex-direction: row-reverse;
-        }
-        .project-text, .project-carousel-wrapper {
-            flex: 1; /* Each takes up half the space */
-        }
-        .project-text h3 {
+        .project-item-stacked h3 {
             font-size: 1.8rem;
             color: var(--color-secundario);
             margin-bottom: 1rem;
         }
-        .project-text p {
+        .project-item-stacked p {
             font-size: 1rem;
             line-height: 1.8;
             color: var(--color-texto-secundario);
+            max-width: 85ch; /* Limit text width for readability */
         }
-
+        
         /* --- Project Carousel Styling --- */
         .project-carousel {
-            margin-top: 1rem;
+            margin-top: 2rem;
         }
         .glide__slide a {
             display: block;
@@ -107,7 +103,7 @@
         }
         .glide__slide img {
             width: 100%;
-            height: 280px;
+            height: 350px;
             object-fit: contain;
             border-radius: 8px;
             background-color: var(--color-fondo);
@@ -118,7 +114,7 @@
             font-size: 0.85rem;
             color: var(--color-texto-secundario);
             line-height: 1.5;
-            height: 90px;
+            height: 70px;
             overflow: auto;
         }
         .glide__arrow {
@@ -126,8 +122,8 @@
             border: 1px solid var(--color-texto-secundario);
             color: var(--color-texto-secundario);
         }
-        .glide__arrow--left { left: -40px; }
-        .glide__arrow--right { right: -40px; }
+        .glide__arrow--left { left: 1rem; }
+        .glide__arrow--right { right: 1rem; }
         .status-tag { font-style: italic; color: var(--color-secundario); font-size: 0.9rem; margin-top: 1rem; display: inline-block;}
 
         /* --- Field Expeditions Section --- */
@@ -195,12 +191,6 @@
             .timeline-item.left, .timeline-item.right { left: 0; }
             .timeline-item.right::after, .timeline-item.left::after { left: 10px; }
             .timeline-item.right::before, .timeline-item.left::before { left: 25px; border-width: 10px 10px 10px 0; border-color: transparent var(--color-superficie) transparent transparent; }
-            .project-item, .project-item--reverse {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            .glide__arrow--left { left: 5px; }
-            .glide__arrow--right { right: 5px; }
         }
     </style>
 </head>
@@ -320,78 +310,57 @@
 
         <section id="projects" class="container">
             <div class="section-header"><h2>Research Projects</h2></div>
-            <div class="project-list">
-
-                <div class="project-item">
-                    <div class="project-carousel-wrapper baguette-gallery">
-                        <div class="project-carousel">
-                            <div class="glide">
-                                <div class="glide__track" data-glide-el="track">
-                                    <ul class="glide__slides">
-                                        <li class="glide__slide">
-                                            <a href="Isolated_cultiure.jpg" title="Isolate Characterization">
-                                                <img src="Isolated_cultiure.jpg" alt="Isolation and characterization of haloarchaeal oMaY14 isolate">
-                                            </a>
-                                            <p class="figure-caption"><strong>Fig. 1: Isolate Characterization.</strong> Culture and colony morphology of the oMaY14 isolate in various MGM concentrations.</p>
-                                        </li>
-                                        <li class="glide__slide">
-                                            <a href="Halobacterium_pangenome.jpg" title="Pangenome Visualization">
-                                                <img src="Halobacterium_pangenome.jpg" alt="Pangenome of Halobacterium species">
-                                            </a>
-                                            <p class="figure-caption"><strong>Fig. 2: Pangenome Visualization.</strong> Pangenome of 47 *Halobacterium* genomes via anvi'o, showing gene clusters and phylogenomic tree.</p>
-                                        </li>
-                                        <li class="glide__slide">
-                                             <a href="phylo_halobacte.png" title="Phylogenomic Tree">
-                                                <img src="phylo_halobacte.png" alt="Phylogenomic tree of Halobacterium species">
-                                            </a>
-                                            <p class="figure-caption"><strong>Fig. 3: Phylogenomic Tree.</strong> A comprehensive tree based on 76 single-copy core proteins from 47 strains of the *Halobacterium* genus.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="glide__arrows" data-glide-el="controls">
-                                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
-                                </div>
-                            </div>
+            
+            <div class="project-item-stacked baguette-gallery">
+                <h3>Characterization and Pangenomics of *Halobacterium* from an Unexplored Saltern</h3>
+                <p>This study reports the first isolation of a carotenoid-producing halophilic archaeon, strain oMaY14, from the Galerazamba Solar Saltern in Colombia. Identified as a member of the *Halobacterium* genus, this isolate produces bacterioruberin in high-salt conditions. To place this discovery in a broader context, a comprehensive phylo-pangenomic analysis of the *Halobacterium* genus was conducted using 47 genomes. The analysis revealed an open pangenome, indicating significant genomic diversity, and allowed for a precise taxonomic re-evaluation using ANI, leading to proposed reclassifications within the genus. This work combines novel isolation with large-scale comparative genomics to expand our understanding of these extremophiles.</p>
+                <div class="project-carousel">
+                    <div class="glide">
+                        <div class="glide__track" data-glide-el="track">
+                            <ul class="glide__slides">
+                                <li class="glide__slide">
+                                    <a href="Isolated_cultiure.jpg" title="Isolate Characterization">
+                                        <img src="Isolated_cultiure.jpg" alt="Isolation and characterization of haloarchaeal oMaY14 isolate">
+                                    </a>
+                                    <p class="figure-caption"><strong>Fig. 1: Isolate Characterization.</strong> Culture and colony morphology of the oMaY14 isolate.</p>
+                                </li>
+                                <li class="glide__slide">
+                                    <a href="Halobacterium_pangenome.jpg" title="Pangenome Visualization">
+                                        <img src="Halobacterium_pangenome.jpg" alt="Pangenome of Halobacterium species">
+                                    </a>
+                                    <p class="figure-caption"><strong>Fig. 2: Pangenome Visualization.</strong> Pangenome of 47 *Halobacterium* genomes via anvi'o.</p>
+                                </li>
+                                <li class="glide__slide">
+                                     <a href="phylo_halobacte.png" title="Phylogenomic Tree">
+                                        <img src="phylo_halobacte.png" alt="Phylogenomic tree of Halobacterium species">
+                                    </a>
+                                    <p class="figure-caption"><strong>Fig. 3: Phylogenomic Tree.</strong> Tree based on 76 single-copy core proteins from 47 strains.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="glide__arrows" data-glide-el="controls">
+                            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
                         </div>
                     </div>
-                    <div class="project-text">
-                        <h3>Characterization and Pangenomics of *Halobacterium* from an Unexplored Saltern</h3>
-                        <p>This study reports the first isolation of a carotenoid-producing halophilic archaeon, strain oMaY14, from the Galerazamba Solar Saltern in Colombia. Identified as a member of the *Halobacterium* genus, this isolate produces bacterioruberin in high-salt conditions. To place this discovery in a broader context, a comprehensive phylo-pangenomic analysis of the *Halobacterium* genus was conducted using 47 genomes. The analysis revealed an open pangenome, indicating significant genomic diversity, and allowed for a precise taxonomic re-evaluation using ANI, leading to proposed reclassifications within the genus. This work combines novel isolation with large-scale comparative genomics to expand our understanding of these extremophiles.</p>
-                    </div>
                 </div>
+            </div>
 
-                <div class="project-item project-item--reverse">
-                    <div class="project-carousel-wrapper baguette-gallery">
-                        <div class="project-carousel">
-                            <div class="glide">
-                                <div class="glide__track" data-glide-el="track">
-                                    <ul class="glide__slides">
-                                        <li class="glide__slide">
-                                            <a href="placeholder_1.jpg"><img src="placeholder_1.jpg" alt="Figure 1"></a>
-                                            <p class="figure-caption">[Add description for Figure 1 here]</p>
-                                        </li>
-                                        <li class="glide__slide">
-                                            <a href="placeholder_2.jpg"><img src="placeholder_2.jpg" alt="Figure 2"></a>
-                                            <p class="figure-caption">[Add description for Figure 2 here]</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="glide__arrows" data-glide-el="controls">
-                                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-text">
-                        <h3>Genomic characterization of *Vreelandella venusta* isolated from the Galerazamba Solar Saltern</h3>
-                        <p>[Add a brief abstract or summary for this project here]</p>
+            <div class="project-item-stacked baguette-gallery">
+                <h3>Genomic characterization of *Vreelandella venusta* isolated from the Galerazamba Solar Saltern</h3>
+                <p>[Add a brief abstract or summary for this project here]</p>
+                <div class="project-carousel">
+                    <div class="glide">
+                        <div class="glide__track" data-glide-el="track"><ul class="glide__slides">
+                            <li class="glide__slide"><a href="placeholder_1.jpg"><img src="placeholder_1.jpg" alt="Figure 1"></a><p class="figure-caption">[Add description for Figure 1]</p></li>
+                            <li class="glide__slide"><a href="placeholder_2.jpg"><img src="placeholder_2.jpg" alt="Figure 2"></a><p class="figure-caption">[Add description for Figure 2]</p></li>
+                        </ul></div>
+                        <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button></div>
                     </div>
                 </div>
-
-                </div>
-        </section>
+            </div>
+            
+            </section>
 
         <section id="expeditions" class="container">
             <div class="section-header">
