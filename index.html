@@ -70,8 +70,32 @@
         .card:hover { transform: translateY(-10px); }
         .card-content { flex-grow: 1; font-size: 0.95rem; color: var(--color-texto-secundario); }
         .card h3 { color: var(--color-secundario); margin-bottom: 0.75rem; font-size: 1.25rem; }
-        .project-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1.5rem; }
-        .project-images img { width: 100%; height: 120px; object-fit: cover; border-radius: 5px; background-color: var(--color-fondo); border: 1px solid rgba(255, 255, 255, 0.1); }
+/* --- Project Figures Styling --- */
+        .project-figures-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .project-figure {
+            text-align: center;
+        }
+        .project-figure img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+            background-color: var(--color-fondo);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 0.5rem;
+        }
+        .figure-caption {
+            font-size: 0.8rem;
+            color: var(--color-texto-secundario);
+            line-height: 1.4;
+        }
         .status-tag { font-style: italic; color: var(--color-secundario); font-size: 0.9rem; margin-top: 0.5rem; }
         .publication-list .item, .awards-list .item { background: var(--color-superficie); padding: 1rem; border-radius: 5px; margin-bottom: 1rem; border-left: 3px solid var(--color-primario); }
         .publication-list .journal, .awards-list .organization { font-weight: 600; color: var(--color-secundario); display: block; }
